@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<title>Registro</title>
+<link rel="shortcut icon" href="./imagens/ImagemRegistro.png" type="image/x-icon">
+
+<link rel="stylesheet" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h2> Registre seu texto: </h2>
+
+        <input type="text" id="textoInput" placeholder="Digite aqui">
+        <button id="registrarBtn">Registrar</button><br> 
+
+        <center>
+       <h6> ---------------------------------------------------------------------------------------------------------------- </h6>
+       </center> 
+
+        <button class="corBtn" data-cor="green" style="background-color: rgb(32, 219, 110); color: white;">Verde</button>
+        <button class="corBtn" data-cor="blue" style="background-color: rgb(0, 102, 255); color: white;">Azul</button>
+        <button class="corBtn" data-cor="red" style="background-color: rgb(255, 0, 0); color: white;">Vermelho</button><br>
+        
+        <br> 
+
+        <button id="aumentarBtn">Aumentar</button>
+        <button id="diminuirBtn">Diminuir</button>
+        
+        <h5> Registros: </h5>
+        <div id="registro"></div>
+
+    </div>
+   
+    <script>
+        $(document).ready(function(){
+            $("#registrarBtn").click(function(){
+                var texto = $("#textoInput").val();
+                $("#registro").append("<span class='registroTexto'>" + texto + "</span><br>");
+                $("#textoInput").val('');
+            });
+
+            $(".corBtn").click(function(){
+                var cor = $(this).attr("data-cor");
+                $(".registroTexto").css("color", cor);
+            });
+
+            $("#aumentarBtn").click(function(){
+                var tamanhoAtual = parseInt($(".registroTexto").css("font-size"));
+                $(".registroTexto").css("font-size", tamanhoAtual + 2);
+            });
+
+            $("#diminuirBtn").click(function(){
+                var tamanhoAtual = parseInt($(".registroTexto").css("font-size"));
+                $(".registroTexto").css("font-size", tamanhoAtual - 2);
+            });
+        });
+    </script>
+
+</body>
+</html>
